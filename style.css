@@ -1,0 +1,217 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #87CEEB, #E0FFFF);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1::before {
+    content: "🚂 ";
+    cursor: pointer;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+h1:hover::before {
+    transform: scale(1.2);
+}
+
+.total-passengers {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.railway {
+    width: 90%;
+    margin: 40px auto 20px auto;
+    position: relative;
+    height: 80px;
+    border-top: 6px solid #444;
+    background: linear-gradient(to bottom, transparent 0%, rgba(139, 69, 19, 0.1) 100%);
+    border-radius: 3px;
+}
+
+.station {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #444;
+    border: 3px solid #666;
+    border-radius: 50%;
+    top: -12px;
+    transition: transform 0.3s;
+}
+
+.station:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.station::after {
+    content: attr(data-name);
+    position: absolute;
+    top: 20px;
+    left: -40px;
+    width: 100px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #444;
+}
+
+.waiting-passengers {
+    position: absolute;
+    top: -35px;
+    left: -25px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    color: #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#train {
+    font-size: 2.5rem;
+    position: absolute;
+    left: 0;
+    top: -45px;
+    transition: left 0.5s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.train-passengers {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background: #2c3e50;
+    color: white;
+    font-size: 0.6rem;
+    padding: 2px 4px;
+    border-radius: 8px;
+    min-width: 12px;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+    font-weight: normal;
+}
+
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+tr:hover {
+    background: #e9ecef;
+    cursor: pointer;
+}
+
+.selected {
+    background: #fff3cd !important;
+    border: 2px solid #ffc107;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status-low {
+    color: #28a745;
+    /* зеленый */
+}
+
+.status-medium {
+    color: #ffc107;
+    /* желтый */
+}
+
+.status-high {
+    color: #dc3545;
+    /* красный */
+}
+
+@keyframes steam {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-20px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.steam {
+    position: absolute;
+    font-size: 1.2em;
+    animation: steam 2s infinite;
+    color: gray;
+}
